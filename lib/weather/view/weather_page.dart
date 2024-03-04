@@ -46,6 +46,12 @@ class WeatherMainWidget extends StatelessWidget {
 
   final Color bgColor;
   final Color textColor;
+  final String temperature = "24";
+  final String feelsLike = "28";
+  final String mainWeather = "Cloudy";
+  final String location = "California, Los Angeles";
+  final String date = "21 Oct 2019";
+  final String sunset = "18:20";
 
   TextStyle _textStyle({
     double fontSize = 15.0,
@@ -78,23 +84,23 @@ class WeatherMainWidget extends StatelessWidget {
               ),
               const SizedBox(width: 20.0),
               Text(
-                "25",
+                temperature,
                 style: _textStyle(fontSize: 100.0),
               ),
             ],
           ),
           Text(
-            "Cloudy",
+            mainWeather,
             style: _textStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 15.0),
           Text(
-            "California, Los Angeles",
+            location,
             style: _textStyle(),
           ),
           const SizedBox(height: 15.0),
           Text(
-            "21 Oct 2019",
+            date,
             style: _textStyle(),
           ),
           const SizedBox(height: 15.0),
@@ -104,7 +110,7 @@ class WeatherMainWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Feels like: 28",
+                  "Feels like: $feelsLike",
                   style: _textStyle(),
                 ),
                 VerticalDivider(
@@ -115,7 +121,7 @@ class WeatherMainWidget extends StatelessWidget {
                   color: textColor,
                 ),
                 Text(
-                  "Sunset 18:20",
+                  "Sunset $sunset",
                   style: _textStyle(),
                 ),
               ],
