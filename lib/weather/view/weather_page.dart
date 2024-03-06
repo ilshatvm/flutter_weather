@@ -37,6 +37,33 @@ class WeatherPage extends StatelessWidget {
   }
 }
 
+class TextWidget extends StatelessWidget {
+  const TextWidget(
+    this.text, {
+    super.key,
+    this.color = Colors.white,
+    this.size = 15.0,
+    this.weight = FontWeight.w500,
+  });
+
+  final Color color;
+  final double size;
+  final FontWeight weight;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: weight,
+        color: color,
+      ),
+    );
+  }
+}
+
 class WeatherMainWidget extends StatelessWidget {
   const WeatherMainWidget({
     super.key,
@@ -53,27 +80,13 @@ class WeatherMainWidget extends StatelessWidget {
   final String date = "21 Oct 2019";
   final String sunset = "18:20";
 
-  TextStyle _textStyle({
-    double fontSize = 15.0,
-    FontWeight? fontWeight = FontWeight.w500,
-  }) {
-    return TextStyle(
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-      color: textColor,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return AppContainer(
       color: bgColor,
       child: Column(
         children: [
-          Text(
-            "Today",
-            style: _textStyle(fontSize: 25.0),
-          ),
+          TextWidget("Today", color: textColor, size: 25.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -83,36 +96,26 @@ class WeatherMainWidget extends StatelessWidget {
                 color: textColor,
               ),
               const SizedBox(width: 20.0),
-              Text(
-                temperature,
-                style: _textStyle(fontSize: 100.0),
-              ),
+              TextWidget(temperature, color: textColor, size: 100.0),
             ],
           ),
-          Text(
+          TextWidget(
             mainWeather,
-            style: _textStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+            size: 20.0,
+            color: textColor,
+            weight: FontWeight.w600,
           ),
           const SizedBox(height: 15.0),
-          Text(
-            location,
-            style: _textStyle(),
-          ),
+          TextWidget(location, color: textColor),
           const SizedBox(height: 15.0),
-          Text(
-            date,
-            style: _textStyle(),
-          ),
+          TextWidget(date, color: textColor),
           const SizedBox(height: 15.0),
           SizedBox(
             height: 24.0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Feels like: $feelsLike",
-                  style: _textStyle(),
-                ),
+                TextWidget("Feels like: $feelsLike", color: textColor),
                 VerticalDivider(
                   width: 20,
                   thickness: 1.0,
@@ -120,10 +123,7 @@ class WeatherMainWidget extends StatelessWidget {
                   endIndent: 7,
                   color: textColor,
                 ),
-                Text(
-                  "Sunset $sunset",
-                  style: _textStyle(),
-                ),
+                TextWidget("Sunset $sunset", color: textColor),
               ],
             ),
           ),
